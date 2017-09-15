@@ -16,7 +16,7 @@ import java.text.NumberFormat.*;
 import java.util.Locale.*;
 // corrected by Rudi Coats SofenConsultants 16MAY2017
 //
-//
+
 
 
 public class TariffRateCalculatorReeferPublicHolidays extends AbstractTariffRateCalculatorInterceptor {
