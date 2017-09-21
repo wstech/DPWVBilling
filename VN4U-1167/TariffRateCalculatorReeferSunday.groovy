@@ -49,9 +49,17 @@ public class TariffRateCalculatorReeferSunday extends AbstractTariffRateCalculat
         //logEx("N4-Inventory called qtyPaid:" + qtyPaid + " qtyOwed:" + qtyOwed +
         //	" FirstPaidDay:" + calcInput.getFirstPaidDay() + " PrevPaidThruDay:" + calcInput.getPrevPaidThruDay() + " PaidThruDay:" + calcInput.getPaidThruDay(), inv);
 
+        Date itemTo = null;
+        Date outTime = chrgUnitEvt.getBexuUfvTimeOut();
+        if (outTime != null) {
+            itemTo = outTime;
+        } else {
+            itemTo = inv.getInvoicePaidThruDay();
+        }
+
         //replaced the below with the call from the invoice paid thru day paramter
         //Date itemTo = calcInput.getPaidThruDay();
-        Date itemTo = inv.getInvoicePaidThruDay();
+        //Date itemTo = inv.getInvoicePaidThruDay();
         String item = fmt.format(itemTo);
         Date itemTo2 = fmt.parse(item);
         int qtyDays = 0;
