@@ -45,8 +45,15 @@ public class TariffRateCalculatorReeferPublicHolidays extends AbstractTariffRate
         //logEx("N4-Inventory called qtyPaid:" + qtyPaid + " qtyOwed:" + qtyOwed +
         //	" FirstPaidDay:" + calcInput.getFirstPaidDay() + " PrevPaidThruDay:" + calcInput.getPrevPaidThruDay() + " PaidThruDay:" + calcInput.getPaidThruDay(), inv);
         //replaced the below with the call from the invoice paid thru day paramter
+        Date itemTo = null;
+        Date outTime = chrgUnitEvt.getBexuUfvTimeOut();
+        if (outTime != null) {
+            itemTo = outTime;
+        } else {
+            itemTo = inv.getInvoicePaidThruDay();
+        }
         //Date itemTo = calcInput.getPaidThruDay();
-        Date itemTo = inv.getInvoicePaidThruDay();
+        //Date itemTo = inv.getInvoicePaidThruDay();
         int qtyDays = 0;
         Double outRateAmount = tariffRate.getRateAmount();
         Calendar start = Calendar.getInstance();
